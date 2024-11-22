@@ -29,3 +29,20 @@ cat("Mean:", temp_mean, "\nMedian:", temp_median, "\n\n")
 cat("CO₂ Concentrations (ppm):\n")
 cat("Mean:", co2_mean, "\nMedian:", co2_median, "\n")
 
+# Define a function to calculate mode
+calculate_mode <- function(x) {
+  uniq_vals <- unique(x)
+  uniq_vals[which.max(tabulate(match(x, uniq_vals)))]
+}
+
+# Calculate and display the modes for Temp and CO2
+temp_mode <- calculate_mode(carbon_segment$Temp)
+co2_mode <- calculate_mode(carbon_segment$CO2)
+
+cat("Mode of Temperature (°C):", temp_mode, "\n")
+cat("Mode of CO₂ Concentrations (ppm):", co2_mode, "\n")
+
+
+
+
+
