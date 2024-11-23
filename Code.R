@@ -69,3 +69,42 @@ hist(
 )
 dev.off() # Close the PNG device
 
+# Inspecting the Distribution with Bell Curve Overlay
+# Save Temperature histogram as a PNG file with a bell-shaped curve
+png("temperature_histogram_with_bell_curve.png", width = 800, height = 600) # Set file name and resolution
+hist(
+  carbon_segment$Temp,
+  main = "Temperature Distribution with Bell Curve",
+  xlab = "Temperature (°C)",
+  col = "lightblue",
+  border = "black",
+  breaks = 10,
+  freq = FALSE # Set to FALSE to plot density instead of frequency
+)
+curve(
+  dnorm(x, mean = mean(carbon_segment$Temp, na.rm = TRUE), sd = sd(carbon_segment$Temp, na.rm = TRUE)),
+  col = "darkblue",
+  lwd = 2,
+  add = TRUE
+) # Add the normal distribution curve
+dev.off() # Close the PNG device
+
+# Save CO2 histogram as a PNG file with a bell-shaped curve
+png("co2_histogram_with_bell_curve.png", width = 800, height = 600) # Set file name and resolution
+hist(
+  carbon_segment$CO2,
+  main = "CO2 Concentration Distribution with Bell Curve",
+  xlab = "CO2 Concentrations (ppm)",
+  col = "lightgreen",
+  border = "black",
+  breaks = 10,
+  freq = FALSE # Set to FALSE to plot density instead of frequency
+)
+curve(
+  dnorm(x, mean = mean(carbon_segment$CO2, na.rm = TRUE), sd = sd(carbon_segment$CO2, na.rm = TRUE)),
+  col = "darkred",
+  lwd = 2,
+  add = TRUE
+) # Add the normal distribution curve
+dev.off() # Close the PNG device
+
