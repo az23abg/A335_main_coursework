@@ -108,3 +108,15 @@ curve(
 ) # Add the normal distribution curve
 dev.off() # Close the PNG device
 
+# Scatterplot with trendline
+png("ScatterPlot With Trendline.png", width = 800, height = 600) # Set file name and resolution
+plot(carbon_segment$CO2, carbon_segment$Temp, 
+     main = "Scatterplot of CO2 vs Temperature", 
+     xlab = "CO2 Concentrations (ppm)", 
+     ylab = "Temperature (°C)", 
+     pch = 19, col = "blue")
+
+# Add a trendline
+abline(lm(carbon_segment$Temp ~ carbon_segment$CO2), col = "red", lwd = 2)
+
+dev.off() # Close the PNG device
