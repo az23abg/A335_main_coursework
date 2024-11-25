@@ -121,5 +121,9 @@ abline(lm(carbon_segment$Temp ~ carbon_segment$CO2), col = "red", lwd = 2)
 
 dev.off() # Close the PNG device
 
+# Perform Pearson's correlation test
+correlation_result <- cor.test(carbon_segment$Temp, carbon_segment$CO2, method = "pearson")
 
+# Display the result
+print(correlation_result)
  
